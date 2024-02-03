@@ -5,9 +5,16 @@ import Image from 'next/image';
 import { FaHeartCirclePlus, FaEye } from 'react-icons/fa6';
 import toast from 'react-hot-toast';
 import { ProductTypes } from '@/types/ProductTypes';
+import AddToCart from '@/app/(shoppingcart)/components/ui/AddToCart';
 
 const ProductsCard = ({ product }: { product: ProductTypes }) => {
 	const [selectedSize, setSelectedSize] = useState('');
+
+	const isSizeSelected = selectedSize !== '';
+
+	const showToast = () => {
+		toast.error('Please select a size based on your fit');
+	};
 
 	return (
 		<div className='relative flex flex-col items-center '>
@@ -39,7 +46,16 @@ const ProductsCard = ({ product }: { product: ProductTypes }) => {
 				<option value='large'>Large Size</option>
 			</select>
 
-			<button>Add to Cart</button>
+			<AddToCart
+				name={product.name}
+				image={product.image}
+				price={product.unit_amount}
+				id={product.price_id}
+				sizeSelect={isSizeSelected}
+				size={selectedSize}
+				onClick={!isSizeSelected ? showToast : undefined}
+				currency='USD'
+			/>
 		</div>
 	);
 };

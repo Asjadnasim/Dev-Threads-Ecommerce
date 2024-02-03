@@ -38,3 +38,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 For installing stripe
 npm install --save @stripe/react-stripe-js @stripe/stripe-js
 npm i stripe
+
+For Checkout installing zustand
+npm i zustand
+
+Use shopping cart
+npm install @stripe/stripe-js use-shopping-cart

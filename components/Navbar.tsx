@@ -19,6 +19,7 @@ import { TbBracketsAngle } from 'react-icons/tb';
 import MobileMenuUser from './shared/MobileMenuUser';
 import UserLinks from './shared/UserLinks';
 import CartIcon from '@/app/(shoppingcart)/components/ui/CartIcon';
+import WhislistIcon from '@/app/(whislist)/components/WhislistIcon';
 
 interface NavbarProps {
 	user: User;
@@ -58,7 +59,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 				<div className='flex gap-5 text-xl [&>*]:cursor-pointer'>
 					{/* <AiOutlineShoppingCart /> */}
 					<CartIcon />
-					<AiOutlineHeart />
+					{/* <AiOutlineHeart /> */}
+					<WhislistIcon />
 					<div className='max-md:hidden' onClick={userMenuHandler}>
 						<AiOutlineUser />
 					</div>

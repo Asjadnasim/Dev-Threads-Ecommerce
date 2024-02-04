@@ -13,8 +13,9 @@ const AddToCart = ({
 	size,
 	sizeSelect,
 	onClick,
+	sku,
 }: Product & {
-	onclick: () => void;
+	onClick?: () => void;
 }) => {
 	const { addItem } = useShoppingCart();
 	const productId = `${id}-${size}`;
@@ -25,6 +26,7 @@ const AddToCart = ({
 		price: price,
 		id: productId,
 		size: size,
+		sku: sku,
 	};
 
 	return (

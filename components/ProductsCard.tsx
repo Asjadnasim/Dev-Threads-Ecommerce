@@ -6,6 +6,8 @@ import { FaHeartCirclePlus, FaEye } from 'react-icons/fa6';
 import toast from 'react-hot-toast';
 import { ProductTypes } from '@/types/ProductTypes';
 import AddToCart from '@/app/(shoppingcart)/components/ui/AddToCart';
+import formatPrice from '@/utils/formatPrice';
+import AddToWishlistButton from '@/app/(whislist)/components/AddToWhislistButton';
 
 const ProductsCard = ({ product }: { product: ProductTypes }) => {
 	const [selectedSize, setSelectedSize] = useState('');
@@ -26,7 +28,14 @@ const ProductsCard = ({ product }: { product: ProductTypes }) => {
 				/>
 				<div className='hidden absolute top-5 items-center justify-center group-hover:flex flex-col gap-3 '>
 					<button className='mx-2 bg-gray-900 border text-white p-2 rounded-md hover:bg-gray-900/75'>
-						<FaHeartCirclePlus />
+						<AddToWishlistButton
+							name={product.name}
+							image={product.image}
+							id={product.id}
+							unit_amount={product.unit_amount}
+							quantity={product.quantity}
+							currency={product.currency}
+						/>
 					</button>
 					<button className='mx-2 bg-gray-900 border text-white p-2 rounded-md hover:bg-gray-900/75'>
 						<FaEye />
@@ -34,7 +43,7 @@ const ProductsCard = ({ product }: { product: ProductTypes }) => {
 				</div>
 			</div>
 			<h3 className='font-semibold tracking-wide mt-2'>{product.name}</h3>
-			<span>{product.unit_amount}</span>
+			<span>{formatPrice(product.unit_amount)}</span>
 			<select
 				value={selectedSize}
 				onChange={(e) => setSelectedSize(e.target.value)}
@@ -55,6 +64,7 @@ const ProductsCard = ({ product }: { product: ProductTypes }) => {
 				size={selectedSize}
 				onClick={!isSizeSelected ? showToast : undefined}
 				currency='USD'
+				sku={product.id}
 			/>
 		</div>
 	);

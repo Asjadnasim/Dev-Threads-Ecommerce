@@ -8,6 +8,7 @@ import Button from '@/components/ui/button';
 import { MdOutlineDelete } from 'react-icons/md';
 import { IoMdAdd } from 'react-icons/io';
 import { FiMinus } from 'react-icons/fi';
+import formatPrice from '@/utils/formatPrice';
 
 const Cart = () => {
 	const { cartDetails, removeItem, totalPrice, decrementItem, incrementItem } =
@@ -54,7 +55,7 @@ const Cart = () => {
 												<h3>{item.name}</h3>
 												<h3 className='text-sm uppercase'>{item.size}</h3>
 											</div>
-											<p className='ml-4 '> {item.price}</p>
+											<p className='ml-4 '> {item.formattedValue}</p>
 										</div>
 									</div>
 									<div className='flex gap-5 mt-3'>
@@ -99,7 +100,9 @@ const Cart = () => {
 							<div className='border-gray-200 border-t px-4 py-6 sm:px-6'>
 								<div className='flex justify-between text-base font-medium text-gray-900'>
 									<p>SubTotal: </p>
-									<p>{totalPrice}</p>
+									<p>
+										{totalPrice !== undefined ? formatPrice(totalPrice) : null}
+									</p>
 								</div>
 								<p className='mt-1 text-sm text-gray-500 '>
 									Shipping and taxes are calculated at checkout.

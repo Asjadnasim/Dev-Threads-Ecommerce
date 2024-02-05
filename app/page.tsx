@@ -1,6 +1,8 @@
 import Info from '@/components/Info';
 import Hero from '@/components/Hero';
 import TopProducts from '@/components/TopProducts';
+import Banner from '../components/Banner';
+import NewArrivals from '@/components/NewArrivals';
 
 const Home = () => {
 	return (
@@ -8,6 +10,8 @@ const Home = () => {
 			<Hero />
 			<Info />
 			<TopProducts />
+			<Banner />
+			<NewArrivals />
 		</>
 	);
 };
